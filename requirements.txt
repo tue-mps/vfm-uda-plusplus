@@ -1,0 +1,14 @@
+torchvision==0.19.1
+xformers==0.0.28.post1
+lightning==2.4.0
+lightning[pytorch-extra]
+torchmetrics
+wandb
+timm
+matplotlib
+pycocotools
+opencv-python==4.10.0.84 # downgrade, there is a bug in the most recent version
+transformers
+scipy
+gitignore_parser
+einops

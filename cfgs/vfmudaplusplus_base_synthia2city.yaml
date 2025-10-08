@@ -1,0 +1,39 @@
+trainer:
+  logger:
+   class_path: lightning.pytorch.loggers.wandb.WandbLogger
+   init_args:
+     name: "base_synthia2city"
+     project: "vfm-uda-plusplus"
+     resume: allow
+  devices: 1
+  num_nodes: 1
+  max_steps: 40000
+  val_check_interval: 1000
+model:
+  class_path: training.uda.uda.UDA
+  init_args:
+    lr: 5e-5
+    lr_multiplier: 0.1
+    token_mask_ratio: 0.7
+    layerwise_lr_decay: 0.9
+    warmup_iters: 1500
+    weight_decay: 0.01
+    use_strong_aug_source: true
+    ema_alpha: 0.999
+    fd_model_name: "dinov2_vitl14_reg"
+    fd_weight_source: 0.1
+    fd_weight_target: 0.1
+    network:
+      class_path: models.multiscale_vfm.vit_adapter_lightweight_pyramid_head.VITAdapterLightweightPyramidHead
+      init_args:
+        model_name: "dinov2_vitb14"
+        num_classes: 19
+data:
+  class_path: datasets.uda_multitrain_multival_datamodule.UDAMultiTrainMultiValDataModule
+  init_args:
+    use_rcs: true
+    batch_size: 2
+    train_num_workers: 4
+    img_size: 1024
+    sources: ["synthia"]
+    targets: ["cityscapes"]

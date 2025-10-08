@@ -1,0 +1,28 @@
+trainer:
+  logger:
+   class_path: lightning.pytorch.loggers.wandb.WandbLogger
+   init_args:
+     resume: allow
+     name: "pretraining_adapter_base_in1k"
+     project: "vfm-uda-plusplus"
+  devices: 1
+  num_nodes: 1
+  max_steps: 50000
+  val_check_interval: 10000
+  check_val_every_n_epoch: null
+model:
+  class_path: training.pretraining.pretraining_classification.PretrainingClassification
+  init_args:
+    num_classes: 1000
+    network:
+      class_path: models.classification.vit_adapter_classification.VITAdapterClassification
+      init_args:
+        model_name: "dinov2_vitb14"
+        num_classes: 1000
+        freeze_vit: true
+data:
+  class_path: datasets.imagenet1k_datamodule.ImageNet1kDataModule
+  init_args:
+    batch_size: 4
+    train_num_workers: 4
+    img_size: 1024
