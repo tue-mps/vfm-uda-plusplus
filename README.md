@@ -194,11 +194,10 @@ For the ViT-Adapter, we use ImageNet1k pretrained weights. During training the V
 ## Citation
 ```
 @inproceedings{englert2025vfmudaplusplus,
-  author={{Englert, Brunó B.} and {Dubbelman, Gijs}},
-  title={{VFM-UDA++: Improving Network Architectures and Data Strategies for Unsupervised Domain Adaptive Semantic Segmentation}},
-  booktitle={Proceedings of the IEEE/CVF Conference on International Conference on Computer Vision Workshops (ICCVW)},
-  url={https://arxiv.org/abs/2503.10685}, 
-  year={2025},
+  author    = {{Englert, Brunó B.} and {Dubbelman, Gijs}},
+  title     = {{VFM-UDA++: Improving Network Architectures and Data Strategies for Unsupervised Domain Adaptive Semantic Segmentation}},
+  booktitle = {Proceedings of the IEEE/CVF Conference on International Conference on Computer Vision Workshops (ICCVW)},
+  year      = {2025},
 }
 ```
 
